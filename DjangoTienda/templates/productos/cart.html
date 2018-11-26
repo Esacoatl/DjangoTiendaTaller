@@ -1,0 +1,81 @@
+
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css ' %}">
+<link href="{% static 'resources/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<body class="lo">
+	<!--<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css ' %}">-->
+	
+	
+	<script type="text/javascript"></script>
+<link href="{% static 'resources/shop-homepage.css' %}" rel="stylesheet">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="{% url 'home2'%}">The Django Shop</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+		 aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</div>
+</nav>
+
+	{% block content %}
+
+
+	<div class="conteiner py-4 text-center">	
+		<div class="row">
+
+		<div class="col-md text-center">
+
+<table class="table table-light table-striped table-hover text-center" id="hol">
+					<thead class="thead-light ">
+						<tr>
+							<tr>
+								<th scope="col">Producto</th>								
+								<th scope="col">Precio</th>
+								<th scope="col">Descripcion</th>
+
+							</tr>
+						</tr>
+					</thead>
+					<tbody>
+						{% for producto in productos %}
+						<tr>
+							<th scope="row">{{producto.nombre}}</th>
+							<th scope="row">${{producto.costo}}</th>
+							<th scope="row">{{producto.descripcion}}</th>
+							
+						{% empty %}
+						<tr>
+							<th scope="row">no hay productos</th>
+
+						</tr>
+						{% endfor %}
+						<tr>
+							<th colspan="5" class="text-right"><h3 class="font-weight-bold">Total</h3></th>
+						
+						
+							<th class="text-center"><h3>$ {{total.costo__sum}}</h3></th>
+						</tr>
+						<tr>
+							<th colspan="5"></th>
+							<th class="text-center"><a href="{% url 'confirmar'%}" onclick="gracias()"><img src="{% static 'resources/ok.png' %}"
+		 alt="" height="100" width="100"></a></th>
+						</tr>
+					</tbody>
+				</table>
+
+				
+				
+
+	
+			</div>
+		</div>
+
+
+	</div>
+	
+</body> 
+<script src="{% static 'js/gracias.js ' %}"></script>
+{%endblock%}

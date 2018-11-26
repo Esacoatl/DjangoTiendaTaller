@@ -1,0 +1,38 @@
+{% load staticfiles %}
+
+<body class="lo">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css ' %}">
+  <link href="{% static 'resources/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'resources/shop-homepage.css' %}" rel="stylesheet">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home2'%}">The Django Shop</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+
+	{% block content %}
+<div class="conteiner py-2 col-centered text-center">
+  <h1>Editar</h1><br>
+  <div class="card bg-light border-secondary mb-3 h-33">
+    <div class="card-body">
+<form action="" method="POST" class="post-form">{% csrf_token %}
+  {{ form.as_p }}
+<input type="submit" value="Editar" class="btn btn-success btn-lg">
+</form>
+
+
+    </div>
+  </div>
+
+</div>
+        
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,83 @@
+
+{% load staticfiles %}
+<body class="lo">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css ' %}">
+	<link href="{% static 'resources/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+	<link href="{% static 'resources/shop-homepage.css' %}" rel="stylesheet">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<div class="container">
+<a class="navbar-brand" href="{% url 'home2'%}">The Django Shop</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+		 aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+				
+						<span class="sr-only">(current)</span>
+					</a>
+				<li class="nav-item">
+					
+				</li>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'categorias'%}">Admin. Categorias</a>
+				</li>
+				<li class="nav-item">
+				<a class="nav-link" href="{% url 'shopCart'%}"><img src="{% static 'resources/carrito.png' %}" alt="" height="33" width="33"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+	{% block content %}
+
+	
+
+
+<div class="conteiner py-2 col-centered text-center">
+		<div class="row">
+
+		<div class="col-md ">
+				<br><br>
+				<a href="{% url 'addP'%}" class="btn btn-outline-dark btn-lg">NUEVO Producto</a>
+				<br><br><br>
+
+			<div class="row">
+						{% for producto in productos %}
+						<div class="col-lg-3 mb-1">
+						<div class="card border-secondary mb-3 h-33">
+
+								<div class="card-body">
+									<h4 class="card-title">
+									<a>{{producto.nombre}}</a>
+									</h4>
+									<h5>${{producto.costo}}</h5>
+									<p class="card-text">{{producto.descripcion}}</p>
+									<p class="card-text">Existencias: {{producto.numeroExistencias}} </p>
+									<a href="{% url 'editP' producto.id %}"><img src="{% static 'resources/edit.png' %}" alt="" height="33" width="33"></a></th>
+									<th><a href="{% url 'eliminarProducto' producto.id %}"><img src="{% static 'resources/delete.png' %}" alt="" height="33"
+							width="33"></a>
+								</div>
+								<div class="card-footer">
+									<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+								</div>
+							</div>
+						</div>
+
+						{% empty %}
+
+						{% endfor %}
+	
+			</div>	
+
+			</div>
+		</div>
+
+	</div>
+</body> 
+{%endblock%}

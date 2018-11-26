@@ -1,0 +1,47 @@
+{% load staticfiles %}
+
+<body class="lo">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css ' %}">
+  <link href="{% static 'resources/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'resources/shop-homepage.css' %}" rel="stylesheet">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home2'%}">The Django Shop</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+
+<div class="conteiner py-2 col-centered text-center">
+  <h1>NUEVO Producto</h1><br>
+  <div class="card bg-light border-secondary mb-3 h-33">
+    <div class="card-body">
+
+<form action="{% url 'addP'%}" method="post" class="py-4">{% csrf_token %}
+  <input type="text" name="nombre" placeholder="Nombre"><br><br>
+  <input type="text" name="descripcion" placeholder="Descipcion"><br><br>
+  <input type="numeric" name="costo" placeholder="Precio"><br><br>
+
+  <input type="numeric" name="numeroExistencias" placeholder="Existencias"><br>
+  <br><br>
+
+<input type="submit" value="Crear" class="btn btn-success btn-lg">
+
+</form>
+
+    </div>
+  </div>
+
+</div>
+
+	
+	
+	
+	
+</body>
+</html>

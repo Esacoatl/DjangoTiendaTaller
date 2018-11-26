@@ -1,0 +1,76 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css ' %}">
+<link href="{% static 'resources/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<head>
+	<title></title>
+</head>
+
+<body class="lo">
+	<!--<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css ' %}">-->
+	<link href="{% static 'resources/shop-homepage.css' %}" rel="stylesheet">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="{% url 'home2'%}">The Django Shop</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+		 aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					
+						<span class="sr-only">(current)</span>
+					</a>
+				<li class="nav-item">
+					
+				</li>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'product'%}">Admin. Productos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'shopCart'%}"><img src="{% static 'resources/carrito.png' %}" alt="" height="33"
+						 width="33"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="conteiner py-2 col-centered text-center">
+<br>
+<br>
+<a href="{% url 'addC'%}" class="btn btn-outline-dark btn-lg">NUEVA categoria</a>
+<br>
+<br>
+</div>
+	
+	<div class="py-4 "> 
+<table class="table table-light  table-striped " id="hol">
+
+					<tbody>
+						{% for categoria in categorias %}
+						<tr>
+							
+							<th scope="row">{{categoria.categoria}}</th>
+							<th><a href="{% url 'editC' categoria.id%}"><img src="{% static 'resources/edit.png' %}" alt="" height="33" width="33"></a></th>
+							<th><a href="{% url 'deleteC' categoria.id %}"><img src="{% static 'resources/delete.png' %}" alt="" height="33" width="33"></a></th>
+							
+						</tr>
+
+						{% empty %}
+						<tr>
+							<th scope="row">no hay categorias</th>
+
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+	</div>
+
+</body>
+</html>
